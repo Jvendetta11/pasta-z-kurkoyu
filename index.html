@@ -319,12 +319,108 @@
   }
   footer .smile { font-size: 1.6rem; }
 
-  /* Адаптив */
-  @media (max-width: 600px) {
+  /* ===== АДАПТИВ ДЛЯ ТЕЛЕФОНА ===== */
+  @media (max-width: 768px) {
     :root { --base-size: 18px; }
-    header.hero h1 { font-size: 1.9rem; }
-    section { padding: 22px 20px; }
-    section h2 { font-size: 1.4rem; }
+    .container { padding: 0 12px; }
+
+    /* Шапка */
+    header.hero { padding: 30px 16px 28px; }
+    header.hero h1 { font-size: 1.6rem; line-height: 1.25; }
+    header.hero p.subtitle { font-size: 1rem; }
+    .hero-emoji { font-size: 3rem; }
+    .meta-row { gap: 10px; margin-top: 16px; }
+    .meta-card { padding: 10px 14px; min-width: 100px; flex: 1; max-width: 140px; }
+    .meta-card .label { font-size: 0.75rem; }
+    .meta-card .value { font-size: 1.1rem; }
+
+    /* Тулбар — компактний, в дві лінії */
+    .toolbar {
+      padding: 8px 12px;
+      gap: 8px;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .toolbar > * { width: 100%; }
+    .font-controls {
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .font-controls span { display: none; }
+    .font-controls .btn { flex: 1; min-width: 0; padding: 8px 0; }
+    .progress-bar { max-width: 100%; height: 10px; }
+    .progress-label { text-align: center; font-size: 0.85rem; }
+    .toolbar > button.btn { padding: 10px; }
+
+    /* Секції — менше відступів */
+    section { padding: 20px 16px; margin: 18px 0; border-radius: 10px; }
+    section h2 {
+      font-size: 1.25rem;
+      flex-wrap: wrap;
+      gap: 8px;
+      line-height: 1.3;
+    }
+    section h2 .num { width: 36px; height: 36px; font-size: 1rem; }
+    section h3 { font-size: 1.1rem; margin-top: 18px; }
+
+    /* Зміст */
+    nav.toc { padding: 16px 18px; margin: 18px 0; }
+    nav.toc h2 { font-size: 1.15rem; }
+    nav.toc ol { padding-left: 22px; }
+    nav.toc li { padding: 7px 0; }
+
+    /* Чекбокси — більші для пальця */
+    .check-list li {
+      padding: 14px 12px;
+      gap: 10px;
+      font-size: 0.98rem;
+    }
+    .check-list input[type="checkbox"] {
+      width: 26px; height: 26px;
+    }
+
+    /* Кроки */
+    .step { padding: 16px 14px; margin: 12px 0; border-radius: 0 10px 10px 0; }
+    .step-header { gap: 8px; }
+    .step-title { font-size: 1.05rem; }
+    .step-time { font-size: 0.8rem; padding: 3px 10px; }
+    .step-content { font-size: 0.98rem; }
+    .step-actions .btn { width: 100%; padding: 12px; font-size: 1rem; }
+
+    /* Таймер — крупніший дисплей */
+    .timer-box { padding: 14px 12px; }
+    .timer-display { font-size: 2.6rem; }
+    .timer-controls { gap: 6px; }
+    .timer-controls .btn {
+      flex: 1;
+      min-width: 0;
+      padding: 10px 6px;
+      font-size: 0.85rem;
+    }
+
+    /* Підказки */
+    .tip, .warning, .danger { padding: 14px 16px; font-size: 0.95rem; }
+
+    /* Помилки */
+    .mistake { padding: 14px 16px; }
+    .mistake h4 { font-size: 1rem; }
+
+    /* Списки в розділах безпеки */
+    section ul { padding-left: 20px; }
+    section ul li { margin-bottom: 6px; }
+
+    /* Кнопка нагору */
+    .scroll-top { bottom: 14px; right: 14px; width: 48px; height: 48px; }
+  }
+
+  /* Дуже маленькі екрани (iPhone SE, старі телефони) */
+  @media (max-width: 380px) {
+    :root { --base-size: 17px; }
+    header.hero h1 { font-size: 1.4rem; }
+    section h2 { font-size: 1.15rem; }
+    .timer-display { font-size: 2.2rem; }
   }
 
   /* Fix-button (плаваючий «нагору») */
@@ -345,6 +441,16 @@
     z-index: 50;
   }
   .scroll-top.visible { display: block; }
+
+  /* Усі кнопки — мінімальний touch-target 44px на телефоні (Apple HIG) */
+  @media (hover: none) and (pointer: coarse) {
+    .btn { min-height: 44px; }
+    .btn-small { min-height: 38px; }
+    nav.toc a {
+      display: inline-block;
+      padding: 4px 0;
+    }
+  }
 </style>
 </head>
 <body>
